@@ -1,6 +1,6 @@
 # dice.rs
 
-[![CI](https://github.com/matoanselmo/dice.rs/actions/workflows/ci.yml/badge.svg)](https://github.com/matoanselmo/dice.rs/actions/workflows/ci.yml)
+[![CI](https://github.com/matoanselmo/dice.rs/actions/workflows/ci.yml/badge.svg)](https://github.com/matoanselmo/dice.rs/actions/workflows/ci.yml) [![rust-reportcard](https://rust-reportcard.xuri.me/badge/github.com/matoanselmo/dice.rs)](https://rust-reportcard.xuri.me/report/github.com/matoanselmo/dice.rs)
 
 > This is an application I created to learn and practice rust!
 
