@@ -10,11 +10,11 @@ use owo_colors::OwoColorize;
 struct Args {
     /// Number of sides on each die
     #[arg(short, long, default_value_t = 6, value_parser = clap::value_parser!(u32).range(1..))]
-        sides: u32,
+    sides: u32,
 
     /// How many times to roll
     #[arg(short, long, default_value_t = 1, value_parser = clap::value_parser!(u32).range(1..))]
-        tries: u32,
+    tries: u32,
 
     /// Delay between rolls in milliseconds
     #[arg(short, long, default_value_t = 100)]
@@ -25,7 +25,7 @@ fn main() {
     let args = Args::parse();
     let tries = args.tries;
     let bar = ProgressBar::new_spinner();
-    let mut counts: BTreeMap<u32, u32>  = BTreeMap::new();
+    let mut counts: BTreeMap<u32, u32> = BTreeMap::new();
 
     println!(
         "\n{} Rolling {}d{}...\n{} {}{}\n",
@@ -42,8 +42,7 @@ fn main() {
             .unwrap()
             .tick_strings(&[
                 "⠈", "⠉", "⠋", "⠓", "⠒", "⠐", "⠐", "⠒", "⠖", "⠦", "⠤", "⠠", "⠠", "⠤", "⠦", "⠖",
-                "⠒", "⠐", "⠐", "⠒", "⠓", "⠋", "⠉", "⠈",
-                "✔",
+                "⠒", "⠐", "⠐", "⠒", "⠓", "⠋", "⠉", "⠈", "✔",
             ]),
     );
 
@@ -51,17 +50,17 @@ fn main() {
 
     for i in 1..=tries {
         let result = roll(args.sides);
-        *counts.entry(result).or_insert(0) +=1;
+        *counts.entry(result).or_insert(0) += 1;
 
         let styled_result = style_result(result, &args);
 
         thread::sleep(Duration::from_millis(args.delay));
-        
+
         bar.set_message(format!("Rolling: {i}x {styled_result}"));
     }
 
     let mut text = String::from("Done:\n");
-    
+
     for (result, count) in counts {
         let styled_result = style_result(result, &args);
         text.push_str(&format!("  Rolled {styled_result} {count}x\n"));
