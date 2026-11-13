@@ -1,10 +1,5 @@
 use std::{collections::BTreeMap, thread, time::Duration};
 
-/*
- * Gather simple info:
- * - How many sides
- * - How many rolls
- */
 use clap::Parser;
 use indicatif::{ProgressBar, ProgressStyle};
 use owo_colors::OwoColorize;
